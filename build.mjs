@@ -7,7 +7,7 @@
    fully static, GitHub Pages friendly (served from root).
    ============================================================ */
 import { build } from "esbuild";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
 
 // Plain JS sources are concatenated verbatim (already valid).
 const JS_SOURCES = ["src/content.js"];
@@ -55,7 +55,15 @@ async function run() {
   });
   await writeFile("gta.css", css.outputFiles[0].text);
 
-  console.log("Built: gta.css, bundle.js");
+  // Self-contained output dir for Vercel (outputDirectory: "dist"), so the
+  // deploy never serves node_modules or source. GitHub Pages uses the root
+  // copies above. Both stay in sync from this one build.
+  await mkdir("dist", { recursive: true });
+  await copyFile("index.html", "dist/index.html");
+  await writeFile("dist/bundle.js", bundle);
+  await writeFile("dist/gta.css", css.outputFiles[0].text);
+
+  console.log("Built: gta.css, bundle.js (root + dist/)");
 }
 
 run().catch((e) => {

@@ -57,10 +57,25 @@ npx serve .   # or: python3 -m http.server
 
 ## Deploy
 
-GitHub Pages serves the repo root. `index.html`, `gta.css`, and `bundle.js` are
-all at the root, with `CNAME` pointing at `thebharath.co` and `.nojekyll` so
-Pages serves the files verbatim. Push to the default branch and enable Pages
+The site deploys to either platform with no extra setup.
+
+### Vercel
+
+`vercel.json` sets `buildCommand: npm run build` and `outputDirectory: dist`.
+On import, Vercel installs dependencies, runs the build, and serves the
+self-contained `dist/` (so `node_modules` and source are never served). Add
+`thebharath.co` as a custom domain in the Vercel project settings. `dist/` is
+git-ignored and built fresh on each deploy.
+
+### GitHub Pages
+
+Pages serves the repo root. `index.html`, `gta.css`, and `bundle.js` are
+committed at the root, with `CNAME` pointing at `thebharath.co` and `.nojekyll`
+so Pages serves the files verbatim. Push to the default branch and enable Pages
 (source: root) once.
+
+The same `npm run build` produces both the root artifacts (Pages) and `dist/`
+(Vercel), so they never drift.
 
 ## Notes
 
