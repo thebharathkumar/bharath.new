@@ -1,0 +1,20 @@
+{
+  "name": "bharath.new",
+  "version": "1.0.0",
+  "description": "thebharath.co - Bharath Kumar Rajesh, AI Engineer portfolio (GTA-homage static site)",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:42837/git/thebharathkumar/bharath.new"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "jsdom": "^29.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
