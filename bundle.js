@@ -3,7 +3,8 @@
    content.js  ::  single source of truth
    thebharath.co  //  AI Engineer portfolio (GTA homage)
    Rules honored: no em dashes, no invented metrics, NLP-only
-   for Compsoft, MCP Trust Scanner is in development.
+   for Compsoft, verified figures only. Artie Labs PRs were
+   opened (never merged). MCP Trust Scanner is roadmap only.
    ============================================================ */
 
 window.PROFILE = {
@@ -15,7 +16,7 @@ window.PROFILE = {
   headline: "AI Engineer building reliable agentic systems.",
   thesis:
     "I build the triage, eval, and governance tooling that makes agents trustworthy in production.",
-  quickFacts: ["MS CS, Pace Seidenberg", "GPA 3.86", "New York City", "Open to relocation"],
+  quickFacts: ["MS CS, Pace Seidenberg", "GPA 3.87", "New York City", "Open to relocation"],
   roles: ["AI Engineer", "Forward Deployed Engineer", "Software Engineer"],
   sponsorship:
     "On F-1 OPT. Will require H-1B sponsorship in the future.",
@@ -26,7 +27,7 @@ window.PROFILE = {
     twitter: "https://twitter.com/passdweed",
     portfolio: "https://thebharath.co",
     email: "bharath.kr702@gmail.com",
-    resume: "resume.pdf",
+    resume: "/resume.pdf",
   },
 };
 
@@ -38,6 +39,7 @@ window.CATS = {
   RAG: "var(--cat-rag)",
   "Governance and Trust": "var(--cat-govern)",
   "ML and Research": "var(--cat-ml)",
+  Integration: "var(--cat-integration)",
 };
 
 /* ---- BOOT sequence lines ---- */
@@ -51,29 +53,32 @@ window.BOOT = [
 
 /* ---- SKILLS :: stat panel (categorical, no numeric claims) ---- */
 window.SKILLS = [
-  { group: "Agentic", items: ["LangGraph", "LangChain", "MCP", "Multi-agent orchestration", "Tool-calling"] },
-  { group: "Models", items: ["Claude on Amazon Bedrock", "OpenAI API", "Prompt engineering"] },
+  { group: "Agentic", items: ["LangGraph", "LangChain", "MCP", "Multi-agent orchestration", "Tool-calling", "Prompt versioning"] },
+  { group: "Models", items: ["Claude on Amazon Bedrock", "OpenAI API", "Prompt engineering", "OpenRouter", "LiteLLM", "Fireworks", "Streaming and SSE"] },
   { group: "RAG", items: ["Retrieval pipelines", "Grounded generation", "Span-level citations", "Verifier loops"] },
-  { group: "Evals and Observability", items: ["OpenTelemetry", "OTLP", "Eval harnesses", "LLM-as-judge", "Drift and cost monitoring"] },
-  { group: "Backend", items: ["Python", "FastAPI", "Go", "Node.js", "Java / Spring Boot", "gRPC", "GraphQL"] },
-  { group: "Frontend", items: ["TypeScript", "React", "Next.js"] },
-  { group: "Cloud and Infra", items: ["AWS (Bedrock, EC2, S3, Lambda, SageMaker)", "Azure", "GCP", "Docker", "Kubernetes", "Terraform", "GitHub Actions"] },
-  { group: "Data", items: ["Postgres", "DuckDB", "SQLite"] },
+  { group: "Evals and Observability", items: ["OpenTelemetry", "OpenTelemetry GenAI semconv", "OTLP", "Eval harnesses", "LLM-as-judge", "Drift and cost monitoring", "Grafana", "Prometheus", "Mutation testing", "pytest", "Vitest", "Playwright"] },
+  { group: "Backend", items: ["Python", "FastAPI", "Go", "Node.js", "Java / Spring Boot", "gRPC", "GraphQL", "Fastify", "Prisma", "BullMQ", "Zod"] },
+  { group: "Frontend", items: ["TypeScript", "React", "Next.js", "Tailwind", "Vite", "TanStack Query"] },
+  { group: "Cloud and Infra", items: ["AWS (Bedrock, EC2, S3, Lambda, SageMaker)", "Azure", "GCP", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "AWS CDK", "ECS", "Docker Compose"] },
+  { group: "Data", items: ["Postgres", "DuckDB", "SQLite", "Redis"] },
 ];
 
 /* ---- EXPERIENCE :: mission log ---- */
 window.EXPERIENCE = [
   {
     code: "M-01",
-    status: "ACTIVE",
-    role: "Graduate Assistant, AI Engineering",
+    status: "CLEARED",
+    role: "Applied AI Engineer (Graduate Assistant appointment)",
     org: "Pace University, Seidenberg School",
-    period: "Mar 2025 to Present",
+    period: "Mar 2025 to May 2026",
     points: [
-      "Building a production multi-agent chatbot platform using LangGraph orchestration, Claude on Amazon Bedrock, and custom MCP tool servers, serving multiple university departments with department-specific knowledge bases and routing.",
-      "Built an LLM observability dashboard for production workflows: trace capture, eval harness, cost tracking, and drift monitoring.",
+      "Built and ran a production multi-agent platform on LangGraph and Claude (Amazon Bedrock) serving 10,000+ daily users at 99.5% uptime across 12 zero-regression releases.",
+      "Built the evaluation pipeline the platform shipped against: 200+ automated grader tests per release scoring per-prompt quality in CI, which caught 4 silent prompt-template regressions before they reached production.",
+      "Unified 50,000+ documents into one retrieval pipeline reaching 92% MRR@5 and cutting retrieval latency 60%.",
+      "Bridged live systems of record through MCP servers, handling malformed upstream responses, silent tool-call drift, and auth expiry mid-session.",
+      "Instrumented the platform with OpenTelemetry and Grafana for latency, token throughput, and quality drift.",
     ],
-    stack: ["Python", "LangGraph", "Bedrock", "MCP", "FastAPI", "TypeScript", "React", "Postgres", "AWS", "Azure"],
+    stack: ["Python", "LangGraph", "Bedrock", "MCP", "FastAPI", "TypeScript", "React", "Postgres", "OpenTelemetry", "Grafana", "AWS", "Azure"],
   },
   {
     code: "M-02",
@@ -82,11 +87,11 @@ window.EXPERIENCE = [
     org: "Let's Be The Change",
     period: "Sep 2023 to May 2024",
     points: [
-      "Shipped product features in Java, Spring Boot, and React.",
-      "Integrated Stripe, SendGrid, and Twilio across the platform.",
-      "Reduced P99 latency by 80%.",
+      "Cut API P99 latency 80%, from 2,000ms to 400ms, by re-architecting query patterns and introducing a Redis cache layer.",
+      "Integrated Stripe, SendGrid and Twilio end to end behind Java and Spring Boot APIs and webhooks, with zero post-launch incidents across 1,000+ users.",
+      "Shipped an A/B test on recommendation logic in under 3 weeks, producing a 20% retention lift and a 35% reduction in onboarding abandonment.",
     ],
-    stack: ["Java", "Spring Boot", "React", "Stripe", "Twilio"],
+    stack: ["Java", "Spring Boot", "React", "Redis", "Stripe", "SendGrid", "Twilio"],
   },
   {
     code: "M-03",
@@ -95,73 +100,137 @@ window.EXPERIENCE = [
     org: "Compsoft Technologies",
     period: "Aug 2023 to Sep 2023",
     points: [
-      "Built a sentiment analysis model using NLP, reaching 90% accuracy.",
+      "Built a sentiment analysis system using NLP, reaching 90% accuracy.",
+      "Deployed it as a Flask service on AWS.",
     ],
-    stack: ["Python", "NLP", "scikit-learn"],
-  },
-  {
-    code: "M-04",
-    status: "CLEARED",
-    role: "Data Science Intern",
-    org: "Pantech E-Learning",
-    period: "Jun 2023 to Jul 2023",
-    points: [
-      "Built data analysis and visualization workflows on customer behavior datasets.",
-    ],
-    stack: ["Python", "Pandas", "NumPy", "SQL"],
-  },
-  {
-    code: "M-05",
-    status: "CLEARED",
-    role: "Software Engineer Intern",
-    org: "Alltramatic",
-    period: "Dec 2022 to Feb 2023",
-    points: [
-      "Developed backend REST services and database queries for an e-commerce platform.",
-    ],
-    stack: ["Java", "Spring Boot", "MySQL", "REST"],
+    stack: ["Python", "NLP", "scikit-learn", "Flask", "AWS"],
   },
   {
     code: "OSS",
     status: "ONGOING",
     role: "Open Source Contributor",
-    org: "Layer5 / Meshery, Artie Labs, Faramesh Labs",
+    org: "Layer5 / Meshery, Artie Labs, faramesh-core",
     period: "2023 to Present",
     points: [
-      "Layer5 / Meshery (CNCF): 800+ lines across Go and Python over five merged PRs.",
-      "Artie Labs (YC-backed CDC platform): three merged Go PRs.",
-      "Faramesh Labs (open-source agent governance layer): roughly 1,900 lines across stacked PRs.",
+      "Layer5 / Meshery (CNCF): 800+ lines of Go and Python across five merged pull requests.",
+      "faramesh-core: 9 pull requests, including merged PR #33 (delegation token policy).",
+      "Artie Labs: three Go pull requests opened (#1731, #1732, #1733).",
     ],
     stack: ["Go", "Python", "Kubernetes", "CDC", "Governance"],
   },
 ];
 
+/* ---- NUMBERS :: dossier, every figure with its caveat ---- */
+window.NUMBERS = [
+  {
+    claim: "Agent platform scale",
+    figure: "10,000+ daily users, 99.5% uptime",
+    caveat:
+      "University population, not consumer traffic. Load is bursty around the academic calendar, not flat.",
+  },
+  {
+    claim: "Eval pipeline",
+    figure: "200+ grader tests, 4 regressions caught",
+    caveat:
+      "Graders are automated plus rubric-scored, not a held-out human panel. Four caught is four I know about.",
+  },
+  {
+    claim: "loopcheck calibration",
+    figure: "precision 1.00, recall 0.33",
+    caveat:
+      "A 15-file labelled set. The README says outright that 15 files is too small to estimate precision and recall reliably. Recall 0.33 is bad and it is published anyway.",
+  },
+  {
+    claim: "P99 latency",
+    figure: "2,000ms to 400ms",
+    caveat:
+      "Query re-architecture plus a cache on a small service, not a distributed systems rewrite.",
+  },
+];
+window.NUMBERS_NOTE =
+  "Every figure above is published in a public README or came off a committed benchmark report.";
+
 /* ---- PROJECTS :: heist board + garage ----
-   featured: shown large on the heist board.
+   featured: shown on the heist board.
+   flagship: keystone slot.  roadmap: labelled, not yet built.
+   badge:   small pill text (e.g. IN PROGRESS, ROADMAP).
+   pypi:    copyable install command.
    tags[0] drives the card accent color.                    */
 const gh = "https://github.com/thebharathkumar/";
 window.PROJECTS = [
   {
-    slug: "MCP-Trust-Scanner",
-    name: "MCP Trust Scanner",
-    inDev: true,
+    slug: "ForgeSync",
+    name: "ForgeSync",
     featured: true,
     flagship: true,
     desc:
-      "The keystone. A public scanner and leaderboard that audits MCP servers for trust, conformance, and reliability, unifying the observability and governance work below into one tool.",
+      "Reconciliation infrastructure for construction finance. Ingests invoices from four connectors with genuinely different wire formats, normalizes to one canonical model where money is an integer count of minor units, then matches records with five weighted, fully decomposable signals and shows the per-signal breakdown rather than a black-box score. Every mutation to an external system requires human approval and is idempotent at three layers, with an append-only audit trail of before state, after state and actor. 125 unit and 75 integration tests, the integration suite running against real PostgreSQL and Redis rather than fakes.",
+    perf:
+      "Scoring runs roughly 25x faster than ingestion, so the bottleneck is I/O and not the engine. Measured on a 4 vCPU Xeon at 2.8GHz, single threaded, with everything co-located.",
+    stack: ["TypeScript strict", "Fastify", "PostgreSQL", "Prisma", "Redis", "BullMQ", "React", "AWS CDK"],
+    tags: ["Flagship", "Governance and Trust", "Integration"],
+    repo: gh + "ForgeSync",
+  },
+  {
+    slug: "MCP-Trust-Scanner",
+    name: "MCP Trust Scanner",
+    roadmap: true,
+    badge: "ROADMAP",
+    desc:
+      "A public scanner and leaderboard that audits MCP servers for trust, conformance, and reliability, unifying the observability and governance work into one tool. On the roadmap, not yet built.",
     stack: ["Python", "MCP", "OpenTelemetry"],
-    tags: ["Flagship", "Governance and Trust"],
+    tags: ["Governance and Trust"],
     repo: "https://github.com/thebharathkumar",
   },
   {
     slug: "agent-triage",
     name: "agent-triage",
     featured: true,
+    pypi: "pip install agent-triage",
     desc:
       "Ranks multi-agent failures by severity, frequency, and recovery from OpenTelemetry or NDJSON traces. CLI, FastAPI dashboard, OTLP receiver, optional LLM root-cause analysis. pip-installable, typed, tested.",
     stack: ["Python", "FastAPI", "OpenTelemetry", "SQLite"],
     tags: ["Agents", "Evals and Observability"],
     repo: gh + "agent-triage",
+  },
+  {
+    slug: "agent-rx",
+    name: "agent-rx",
+    desc:
+      "Closes the loop on agent-triage: diagnose, propose, A/B test and accept fixes for multi-agent failures, with a learned prioritizer that decides what is worth fixing.",
+    stack: ["Python"],
+    tags: ["Agents"],
+    repo: gh + "agent-rx",
+  },
+  {
+    slug: "loopcheck",
+    name: "loopcheck",
+    featured: true,
+    desc:
+      "Verifier-first agent loop that grades its own grader, using mutation testing as ground truth so a test only counts when it catches deliberately broken code. Reports precision 1.00 and recall 0.33 at the 0.85 accept threshold on a 15-file labelled set, published alongside the caveat that 15 files is too small to estimate either number reliably. 86 tests, and a tamper-evident HMAC-chained audit log.",
+    stack: ["Python", "Mutation testing", "Confidence scoring", "HMAC audit chain"],
+    tags: ["Agents", "Evals and Observability"],
+    repo: gh + "loopcheck",
+  },
+  {
+    slug: "costfloor",
+    name: "costfloor",
+    featured: true,
+    desc:
+      "Finds the cheapest model per task family that shows no silent regression against the expensive baseline. Six structural detectors and no LLM judge. Reports cost in tokens only and deliberately refuses to quote a dollar saving without an operator-supplied rate card. 1,527 lines, 47 tests all passing, green CI on Python 3.11 and 3.12, with an offline demo that runs in about 0.3 seconds and needs no API key.",
+    stack: ["Python"],
+    tags: ["Evals and Observability"],
+    repo: gh + "costfloor",
+  },
+  {
+    slug: "downgrade",
+    name: "downgrade",
+    badge: "IN PROGRESS",
+    desc:
+      "Measures silent quality regression when a model router downgrades a request. Six routing arms across Fireworks FireRouter, Fireworks Nexus, OpenRouter auto and LiteLLM, scored by four structural detectors plus two LLM judges over a six-type regression taxonomy. Instrumented with OpenTelemetry GenAI semantic conventions. Statistical testing is still in progress.",
+    stack: ["Python", "OpenTelemetry GenAI Semconv", "OpenRouter", "LiteLLM"],
+    tags: ["Evals and Observability"],
+    repo: gh + "downgrade",
   },
   {
     slug: "mcp-otel-audit",
@@ -194,6 +263,15 @@ window.PROJECTS = [
     repo: gh + "obindoc",
   },
   {
+    slug: "agent-flight-recorder",
+    name: "agent-flight-recorder",
+    desc:
+      "Claude Code skills for agent observability and tamper-evident audit trails: hash-chained audit logs, OTel tracing, deterministic evals, and failure triage. 74 tests, 97% coverage.",
+    stack: ["Python", "OpenTelemetry"],
+    tags: ["Evals and Observability", "Governance and Trust"],
+    repo: gh + "agent-flight-recorder",
+  },
+  {
     slug: "klaviyo-agent-demo",
     name: "klaviyo-agent-demo",
     featured: true,
@@ -212,6 +290,15 @@ window.PROJECTS = [
     stack: ["Python", "PyTorch", "ONNX", "FastAPI"],
     tags: ["ML and Research"],
     repo: gh + "streamsense",
+  },
+  {
+    slug: "vehicle-damage-detection",
+    name: "vehicle-damage-detection",
+    desc:
+      "Vehicle damage instance segmentation. YOLO11s-seg fine-tuned on CarDD reaching 0.753 mask mAP50 held out, with an imbalance ablation, error analysis, a robustness suite, and a FastAPI and Docker inference service.",
+    stack: ["Python", "PyTorch", "YOLO", "FastAPI", "Docker", "Streamlit"],
+    tags: ["ML and Research"],
+    repo: gh + "vehicle-damage-detection",
   },
   /* ---- garage only ---- */
   {
@@ -262,16 +349,49 @@ window.PROJECTS = [
     tags: ["Evals and Observability"],
     repo: gh + "Eval-harness",
   },
+  /* ---- garage index only (one-line entries) ---- */
+  {
+    slug: "bridge-demo",
+    name: "bridge-demo",
+    desc: "Lender Fit Explainer. Eligible, Not, or Borderline verdicts behind deterministic hard filters. Express and vanilla JS, 18 offline smoke tests.",
+    stack: ["Express", "JavaScript"],
+    tags: ["Governance and Trust"],
+    repo: gh + "bridge-demo",
+  },
+  {
+    slug: "jober",
+    name: "jober",
+    desc: "Bus factor analysis. 69 tests, MIT.",
+    stack: [],
+    tags: ["ML and Research"],
+    repo: gh + "jober",
+  },
+  {
+    slug: "Claimtrace",
+    name: "Claimtrace",
+    desc: "Multi-agent contradiction detection.",
+    stack: [],
+    tags: ["Agents"],
+    repo: gh + "Claimtrace",
+  },
+  {
+    slug: "project-transfer",
+    name: "project-transfer",
+    desc: "Pace University course equivalency, migrated to Azure production.",
+    stack: ["Azure"],
+    tags: ["Integration"],
+    repo: gh + "project-transfer",
+  },
 ];
 
-window.FILTERS = ["All", "Flagship", "Agents", "Evals and Observability", "RAG", "Governance and Trust", "ML and Research"];
+window.FILTERS = ["All", "Flagship", "Agents", "Evals and Observability", "RAG", "Governance and Trust", "ML and Research", "Integration"];
 
 /* ---- EDUCATION ---- */
 window.EDUCATION = [
   {
     school: "Pace University, Seidenberg School",
-    degree: "MS, Computer Science",
-    detail: "GPA 3.86. Graduating May 2026.",
+    degree: "M.S. Computer Science",
+    detail: "GPA 3.87. May 2026.",
   },
   {
     school: "Visvesvaraya Technological University (VTU)",
@@ -291,19 +411,36 @@ window.CERTS = [
 window.PUBLICATIONS = [
   {
     venue: "Springer Nature",
-    meta: "ICACECS 2023, Corresponding Author",
-    title: "Deep CNN-based identification of medicinal and edible plants",
+    meta: "ICACECS 2023 · Corresponding Author",
+    title: "Deep CNN plant and medicinal species classification",
+    detail: "89% accuracy.",
   },
   {
     venue: "IJARESM",
-    meta: "2023",
-    title: "Driver Drowsiness Detection using AI",
+    meta: "November 2023",
+    title: "Driver Drowsiness Detection",
+    detail: "Dlib EAR plus Keras CNN, Android app, 93% pass rate.",
+  },
+];
+
+/* ---- WRITING ---- */
+window.WRITING = [
+  {
+    title: "Medium",
+    meta: "Essays and engineering notes on agents, evals, and observability.",
+    href: window.PROFILE.links.medium,
+  },
+  {
+    title: "mcp-otel-audit writeup",
+    meta: "Public audit of four MCP OpenTelemetry instrumentations against the OTel semantic conventions.",
+    href: "https://github.com/thebharathkumar/mcp-otel-audit",
   },
 ];
 
 window.NAV = [
   { id: "loadout", label: "Skills" },
   { id: "missions", label: "Experience" },
+  { id: "numbers", label: "Numbers" },
   { id: "heist", label: "Projects" },
   { id: "garage", label: "Garage" },
   { id: "trophies", label: "Trophies" },
@@ -314,11 +451,11 @@ const{useState,useEffect,useRef,useMemo}=React,REDUCE=window.matchMedia("(prefer
 
 function Hero(){return React.createElement("header",{className:"hero section",id:"top"},React.createElement("div",{className:"wrap hero-in"},React.createElement("div",{className:"minimap","aria-hidden":"true"},React.createElement("span",{className:"ring r1"}),React.createElement("span",{className:"ring r2"}),React.createElement("span",{className:"me"}),React.createElement("span",{className:"hud lbl"},"NYC")),React.createElement(Reveal,{className:"hero-entering"},React.createElement("span",{className:"ln"}),React.createElement("span",{className:"hud hud-acc"},"Now Entering"),React.createElement("span",{className:"hud"},"// ",PROFILE.city)),React.createElement(Reveal,{d:"1"},React.createElement("h1",{className:"hero-name"},"Bharath Kumar",React.createElement("span",{className:"sub"},"Rajesh"))),React.createElement(Reveal,{d:"2"},React.createElement("p",{className:"hero-line"},"AI Engineer building ",React.createElement("span",{className:"hl"},"reliable")," agentic systems.")),React.createElement(Reveal,{d:"3"},React.createElement("p",{className:"hero-thesis"},PROFILE.thesis)),React.createElement(Reveal,{d:"3"},React.createElement("div",{className:"hero-facts"},PROFILE.quickFacts.map((a,e)=>React.createElement("span",{className:"f",key:e},a)))),React.createElement(Reveal,{d:"4"},React.createElement("div",{className:"hero-cta"},React.createElement("a",{href:"#heist",className:"btn btn-primary"},"View Projects"),React.createElement("a",{href:PROFILE.links.github,target:"_blank",rel:"noopener",className:"btn"},React.createElement(Icon.github,{className:"ic"})," GitHub"),React.createElement("a",{href:PROFILE.links.resume,target:"_blank",rel:"noopener",className:"btn"},React.createElement(Icon.doc,{className:"ic"})," Resume"),React.createElement("a",{href:`mailto:${PROFILE.links.email}`,className:"btn"},React.createElement(Icon.mail,{className:"ic"})," Email"))),React.createElement(Reveal,{d:"5"},React.createElement("div",{className:"scroll-cue"},React.createElement("span",{className:"hud"},"scroll to begin"),React.createElement("span",{className:"bar"})))))}Object.assign(window,{Hero});
 
-function SecHead({kicker:s,title:i,em:e,note:a}){return React.createElement(Reveal,{className:"sec-head"},React.createElement("div",null,React.createElement("div",{className:"sec-kicker"},React.createElement("span",{className:"tick"}),React.createElement("span",{className:"hud hud-acc"},s)),React.createElement("h2",{className:"sec-title"},i," ",e&&React.createElement("em",null,e))),a&&React.createElement("div",{className:"sec-note"},a))}function StatPanel(){return React.createElement("section",{className:"section",id:"loadout"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Stat Panel // Loadout",title:"Capabilities,",em:"equipped.",note:"Grouped by domain. No proficiency scores, the work in the garage speaks for itself."}),React.createElement("div",{className:"stat-grid"},SKILLS.map((s,i)=>React.createElement(Reveal,{className:"stat-cell",key:s.group,d:String(i%4+1)},React.createElement("div",{className:"sc-top"},React.createElement("span",{className:"sc-idx"},String(i+1).padStart(2,"0")),React.createElement("span",{className:"sc-name"},s.group)),React.createElement("div",{className:"stat-blocks","aria-hidden":"true"},Array.from({length:8}).map((e,a)=>React.createElement("i",{key:a}))),React.createElement("div",{className:"stat-items"},s.items.map(e=>React.createElement("span",{key:e},e))))))))}function MissionLog(){return React.createElement("section",{className:"section",id:"missions"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Mission Log // Experience",title:"Roles",em:"cleared.",note:"From production agent platforms to open-source governance work across the CNCF ecosystem."}),React.createElement("div",{className:"missions"},EXPERIENCE.map((s,i)=>{const e=s.status==="ACTIVE"?"active":s.status==="ONGOING"?"ongoing":"";return React.createElement(Reveal,{className:"mission",key:s.code,d:String(Math.min(i,3))},React.createElement("div",{className:"m-side"},React.createElement("span",{className:"m-code"},s.code),React.createElement("span",{className:`m-status ${e}`},s.status),React.createElement("span",{className:"m-period"},s.period)),React.createElement("div",{className:"m-body"},React.createElement("div",{className:"m-role"},s.role),React.createElement("div",{className:"m-org"},s.org),React.createElement("ul",{className:"m-points"},s.points.map((a,c)=>React.createElement("li",{key:c},a))),React.createElement("div",{className:"chip-row"},s.stack.map(a=>React.createElement("span",{className:"chip",key:a},a)))))}))))}Object.assign(window,{SecHead,StatPanel,MissionLog});
+function SecHead({kicker:a,title:e,em:i,note:s}){return React.createElement(Reveal,{className:"sec-head"},React.createElement("div",null,React.createElement("div",{className:"sec-kicker"},React.createElement("span",{className:"tick"}),React.createElement("span",{className:"hud hud-acc"},a)),React.createElement("h2",{className:"sec-title"},e," ",i&&React.createElement("em",null,i))),s&&React.createElement("div",{className:"sec-note"},s))}function StatPanel(){return React.createElement("section",{className:"section",id:"loadout"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Stat Panel // Loadout",title:"Capabilities,",em:"equipped.",note:"Grouped by domain. No proficiency scores, the work in the garage speaks for itself."}),React.createElement("div",{className:"stat-grid"},SKILLS.map((a,e)=>React.createElement(Reveal,{className:"stat-cell",key:a.group,d:String(e%4+1)},React.createElement("div",{className:"sc-top"},React.createElement("span",{className:"sc-idx"},String(e+1).padStart(2,"0")),React.createElement("span",{className:"sc-name"},a.group)),React.createElement("div",{className:"stat-blocks","aria-hidden":"true"},Array.from({length:8}).map((i,s)=>React.createElement("i",{key:s}))),React.createElement("div",{className:"stat-items"},a.items.map(i=>React.createElement("span",{key:i},i))))))))}function MissionLog(){return React.createElement("section",{className:"section",id:"missions"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Mission Log // Experience",title:"Roles",em:"cleared.",note:"From production agent platforms to open-source governance work across the CNCF ecosystem."}),React.createElement("div",{className:"missions"},EXPERIENCE.map((a,e)=>{const i=a.status==="ACTIVE"?"active":a.status==="ONGOING"?"ongoing":"";return React.createElement(Reveal,{className:"mission",key:a.code,d:String(Math.min(e,3))},React.createElement("div",{className:"m-side"},React.createElement("span",{className:"m-code"},a.code),React.createElement("span",{className:`m-status ${i}`},a.status),React.createElement("span",{className:"m-period"},a.period)),React.createElement("div",{className:"m-body"},React.createElement("div",{className:"m-role"},a.role),React.createElement("div",{className:"m-org"},a.org),React.createElement("ul",{className:"m-points"},a.points.map((s,n)=>React.createElement("li",{key:n},s))),React.createElement("div",{className:"chip-row"},a.stack.map(s=>React.createElement("span",{className:"chip",key:s},s)))))}))))}function NumbersDossier(){return React.createElement("section",{className:"section",id:"numbers"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Field Report // Calibration",title:"Numbers, with their",em:"error bars.",note:"Every headline figure, and precisely what it does not mean."}),React.createElement(Reveal,{className:"dossier"},React.createElement("div",{className:"dossier-row dossier-head"},React.createElement("span",{className:"d-claim"},"Claim"),React.createElement("span",{className:"d-figure"},"Figure"),React.createElement("span",{className:"d-caveat"},"What it does not mean")),NUMBERS.map((a,e)=>React.createElement("div",{className:"dossier-row",key:e},React.createElement("span",{className:"d-claim"},React.createElement("span",{className:"d-label","aria-hidden":"true"},"Claim // "),a.claim),React.createElement("span",{className:"d-figure"},React.createElement("span",{className:"d-label","aria-hidden":"true"},"Figure // "),a.figure),React.createElement("span",{className:"d-caveat"},React.createElement("span",{className:"d-label","aria-hidden":"true"},"Does not mean // "),a.caveat)))),React.createElement(Reveal,{className:"dossier-note",d:"1"},React.createElement("span",{className:"vi"},"i")," ",NUMBERS_NOTE)))}Object.assign(window,{SecHead,StatPanel,MissionLog,NumbersDossier});
 
-function Flagship({p:a}){return React.createElement(Reveal,{className:"heist-flag"},React.createElement("a",{className:"flagship",href:a.repo,target:"_blank",rel:"noopener",style:{"--cardc":catColor(a.tags[0])}},React.createElement("div",{className:"fl-l"},React.createElement("span",{className:"fl-tag"},React.createElement("span",{className:"keystone"},"Keystone")," Flagship Project"),React.createElement("h3",{className:"fl-name"},a.name),React.createElement("p",{className:"fl-desc"},a.desc),React.createElement("div",{className:"chip-row",style:{marginTop:22}},a.stack.map(n=>React.createElement("span",{className:"chip",key:n},n)))),React.createElement("div",{className:"fl-r"},React.createElement("div",{className:"fl-status"},React.createElement("span",{className:"pulse"})," STATUS: IN DEVELOPMENT"),React.createElement("div",{className:"fl-diagram","aria-hidden":"true"},React.createElement("div",null,React.createElement("span",{className:"node"},"agent-triage")," ",React.createElement("span",{className:"arrow"},"+")),React.createElement("div",null,React.createElement("span",{className:"node"},"mcp-otel-audit")," ",React.createElement("span",{className:"arrow"},"+")),React.createElement("div",null,React.createElement("span",{className:"node"},"super-mcp-eval")," ",React.createElement("span",{className:"arrow"},"+")),React.createElement("div",null,React.createElement("span",{className:"node"},"obindoc")),React.createElement("div",{className:"arrow"},"\xA0\xA0\xA0\u2193"),React.createElement("div",null,React.createElement("span",{className:"node"},"\u25B8 MCP Trust Scanner")),React.createElement("div",{className:"arrow",style:{marginTop:8}},"scan \xB7 score \xB7 rank")),React.createElement("span",{className:"hud"},"Unifies the observability and governance work into one public audit tool."))))}function PCard({p:a,i:n}){const s=catColor(a.tags[0]);return React.createElement(Reveal,{d:String(n%3+1),style:{display:"flex"}},React.createElement("a",{className:"pcard",href:a.repo,target:"_blank",rel:"noopener",style:{"--cardc":s,flex:1}},React.createElement("div",{className:"pc-top"},React.createElement("span",{className:"pc-cat"},a.tags[0]),React.createElement("span",{className:"pc-link"},React.createElement(Icon.github,null))),React.createElement("div",{className:"pc-name"},a.name,a.inDev&&React.createElement("span",{className:"pc-dev"},"IN DEV")),React.createElement("p",{className:"pc-desc"},a.desc),React.createElement("div",{className:"pc-foot"},React.createElement("div",{className:"chip-row pc-stack"},a.stack.map(t=>React.createElement("span",{className:"chip",key:t},t))))))}function HeistBoard(){const a=PROJECTS.find(s=>s.flagship),n=PROJECTS.filter(s=>s.featured&&!s.flagship);return React.createElement("section",{className:"section",id:"heist"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Heist Board // Featured",title:"The",em:"crew.",note:"The reliability-tooling thesis, shipped. Every artifact ladders up to trustworthy agents in production."}),React.createElement("div",{style:{display:"grid",gap:14}},a&&React.createElement(Flagship,{p:a}),React.createElement("div",{className:"heist-grid"},n.map((s,t)=>React.createElement(PCard,{p:s,i:t,key:s.slug}))))))}function Garage(){const[a,n]=useState(""),[s,t]=useState("All"),i=useMemo(()=>{const e=a.trim().toLowerCase();return PROJECTS.filter(c=>{const r=s==="All"||c.tags.includes(s)||s==="Flagship"&&c.flagship,l=!e||(c.name+" "+c.desc+" "+c.stack.join(" ")).toLowerCase().includes(e);return r&&l})},[a,s]);return React.createElement("section",{className:"section",id:"garage"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"The Garage // Full Index",title:"Every",em:"build.",note:"Search and filter the full repository index. Cards link out to source."}),React.createElement(Reveal,{className:"garage-bar"},React.createElement("label",{className:"search"},React.createElement(Icon.search,null),React.createElement("input",{type:"text",value:a,onChange:e=>n(e.target.value),placeholder:"search builds, stacks, descriptions...","aria-label":"Search projects"})),React.createElement("span",{className:"garage-count"},String(i.length).padStart(2,"0")," / ",String(PROJECTS.length).padStart(2,"0"))),React.createElement(Reveal,{className:"filters",d:"1"},FILTERS.map(e=>React.createElement("button",{key:e,className:`filter ${s===e?"on":""}`,onClick:()=>t(e)},e))),React.createElement("div",{className:"garage-grid",style:{marginTop:22}},i.map((e,c)=>{const r=catColor(e.tags[0]);return React.createElement(Reveal,{d:String(c%3+1),key:e.slug,style:{display:"flex"}},React.createElement("a",{className:"gcard",href:e.repo,target:"_blank",rel:"noopener",style:{"--cardc":r,flex:1}},React.createElement("div",{className:"gc-top"},React.createElement("span",{className:"gc-name"},e.name,e.inDev&&React.createElement("span",{className:"pc-dev"},"IN DEV")),React.createElement("span",{className:"gc-link"},React.createElement(Icon.ext,null))),React.createElement("span",{className:"gc-cat"},e.tags.join(" \xB7 ")),React.createElement("p",{className:"gc-desc"},e.desc),React.createElement("div",{className:"chip-row gc-stack"},e.stack.slice(0,4).map(l=>React.createElement("span",{className:"chip",key:l},l)))))}),i.length===0&&React.createElement("div",{className:"garage-empty"},"// no builds match that query"))))}Object.assign(window,{HeistBoard,Garage});
+function PipInstall({cmd:a}){const[n,l]=useState(!1),e=i=>{i.preventDefault(),i.stopPropagation();const s=()=>{l(!0),setTimeout(()=>l(!1),1400)};navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(a).then(s).catch(()=>{}):s()};return React.createElement("div",{className:"pip",onClick:e,onKeyDown:i=>{(i.key==="Enter"||i.key===" ")&&e(i)},role:"button",tabIndex:0,"aria-label":`Copy ${a} to clipboard`,title:"Copy to clipboard"},React.createElement("span",{className:"pip-dollar"},"$"),React.createElement("code",null,a),React.createElement("span",{className:"pip-copy"},n?"copied":"copy"))}function Flagship({p:a}){return React.createElement(Reveal,{className:"heist-flag"},React.createElement("a",{className:"flagship",href:a.repo,target:"_blank",rel:"noopener",style:{"--cardc":catColor(a.tags[0])}},React.createElement("div",{className:"fl-l"},React.createElement("span",{className:"fl-tag"},React.createElement("span",{className:"keystone"},"Keystone")," Flagship Project"),React.createElement("h3",{className:"fl-name"},a.name),React.createElement("p",{className:"fl-desc"},a.desc),React.createElement("div",{className:"chip-row",style:{marginTop:22}},a.stack.map(n=>React.createElement("span",{className:"chip",key:n},n)))),React.createElement("div",{className:"fl-r"},React.createElement("div",{className:"fl-status"},React.createElement("span",{className:"pulse"})," STATUS: SHIPPED"),React.createElement("div",{className:"fl-diagram","aria-hidden":"true"},React.createElement("div",null,React.createElement("span",{className:"node"},"4 connectors")," ",React.createElement("span",{className:"arrow"},"\u2192")," one canonical model"),React.createElement("div",null,React.createElement("span",{className:"node"},"5 weighted signals")," ",React.createElement("span",{className:"arrow"},"\u2192")," per-signal breakdown"),React.createElement("div",null,React.createElement("span",{className:"node"},"3-layer idempotency")," ",React.createElement("span",{className:"arrow"},"+")," human approval"),React.createElement("div",null,React.createElement("span",{className:"node"},"append-only audit")," ",React.createElement("span",{className:"arrow"},"before / after / actor")),React.createElement("div",{className:"arrow",style:{marginTop:8}},"125 unit \xB7 75 integration tests")),a.perf&&React.createElement("span",{className:"hud"},a.perf))))}function RoadmapCard({p:a}){return React.createElement(Reveal,{className:"heist-flag"},React.createElement("a",{className:"flagship roadmap-card",href:a.repo,target:"_blank",rel:"noopener",style:{"--cardc":catColor(a.tags[0])}},React.createElement("div",{className:"fl-l"},React.createElement("span",{className:"fl-tag"},React.createElement("span",{className:"keystone"},"Roadmap")," Not yet built"),React.createElement("h3",{className:"fl-name"},a.name),React.createElement("p",{className:"fl-desc"},a.desc),React.createElement("div",{className:"chip-row",style:{marginTop:22}},a.stack.map(n=>React.createElement("span",{className:"chip",key:n},n)))),React.createElement("div",{className:"fl-r"},React.createElement("div",{className:"fl-status"},React.createElement("span",{className:"pulse"})," STATUS: ON THE ROADMAP"),React.createElement("div",{className:"fl-diagram","aria-hidden":"true"},React.createElement("div",null,React.createElement("span",{className:"node"},"agent-triage")," ",React.createElement("span",{className:"arrow"},"+")),React.createElement("div",null,React.createElement("span",{className:"node"},"mcp-otel-audit")," ",React.createElement("span",{className:"arrow"},"+")),React.createElement("div",null,React.createElement("span",{className:"node"},"super-mcp-eval")," ",React.createElement("span",{className:"arrow"},"+")),React.createElement("div",null,React.createElement("span",{className:"node"},"obindoc")),React.createElement("div",{className:"arrow"},"\xA0\xA0\xA0\u2193"),React.createElement("div",null,React.createElement("span",{className:"node"},"\u25B8 MCP Trust Scanner")),React.createElement("div",{className:"arrow",style:{marginTop:8}},"scan \xB7 score \xB7 rank")),React.createElement("span",{className:"hud"},"Will unify the observability and governance work into one public audit tool."))))}function PCard({p:a,i:n}){const l=catColor(a.tags[0]);return React.createElement(Reveal,{d:String(n%3+1),style:{display:"flex"}},React.createElement("a",{className:"pcard",href:a.repo,target:"_blank",rel:"noopener",style:{"--cardc":l,flex:1}},React.createElement("div",{className:"pc-top"},React.createElement("span",{className:"pc-cat"},a.tags[0]),React.createElement("span",{className:"pc-link"},React.createElement(Icon.github,null))),React.createElement("div",{className:"pc-name"},a.name,a.badge&&React.createElement("span",{className:"pc-dev"},a.badge)),React.createElement("p",{className:"pc-desc"},a.desc),React.createElement("div",{className:"pc-foot"},a.pypi&&React.createElement(PipInstall,{cmd:a.pypi}),React.createElement("div",{className:"chip-row pc-stack"},a.stack.map(e=>React.createElement("span",{className:"chip",key:e},e))))))}function HeistBoard(){const a=PROJECTS.find(e=>e.flagship),n=PROJECTS.find(e=>e.roadmap),l=PROJECTS.filter(e=>e.featured&&!e.flagship);return React.createElement("section",{className:"section",id:"heist"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Heist Board // Featured",title:"The",em:"crew.",note:"The reliability-tooling thesis, shipped. Every artifact ladders up to trustworthy agents in production."}),React.createElement("div",{style:{display:"grid",gap:14}},a&&React.createElement(Flagship,{p:a}),n&&React.createElement(RoadmapCard,{p:n}),React.createElement("div",{className:"heist-grid"},l.map((e,i)=>React.createElement(PCard,{p:e,i,key:e.slug}))))))}function Garage(){const[a,n]=useState(""),[l,e]=useState("All"),i=useMemo(()=>{const s=a.trim().toLowerCase();return PROJECTS.filter(t=>{const r=l==="All"||t.tags.includes(l)||l==="Flagship"&&t.flagship,c=!s||(t.name+" "+t.desc+" "+t.stack.join(" ")).toLowerCase().includes(s);return r&&c})},[a,l]);return React.createElement("section",{className:"section",id:"garage"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"The Garage // Full Index",title:"Every",em:"build.",note:"Search and filter the full repository index. Cards link out to source."}),React.createElement(Reveal,{className:"garage-bar"},React.createElement("label",{className:"search"},React.createElement(Icon.search,null),React.createElement("input",{type:"text",value:a,onChange:s=>n(s.target.value),placeholder:"search builds, stacks, descriptions...","aria-label":"Search projects"})),React.createElement("span",{className:"garage-count"},String(i.length).padStart(2,"0")," / ",String(PROJECTS.length).padStart(2,"0"))),React.createElement(Reveal,{className:"filters",d:"1"},FILTERS.map(s=>React.createElement("button",{key:s,className:`filter ${l===s?"on":""}`,onClick:()=>e(s)},s))),React.createElement("div",{className:"garage-grid",style:{marginTop:22}},i.map((s,t)=>{const r=catColor(s.tags[0]);return React.createElement(Reveal,{d:String(t%3+1),key:s.slug,style:{display:"flex"}},React.createElement("a",{className:"gcard",href:s.repo,target:"_blank",rel:"noopener",style:{"--cardc":r,flex:1}},React.createElement("div",{className:"gc-top"},React.createElement("span",{className:"gc-name"},s.name,s.badge&&React.createElement("span",{className:"pc-dev"},s.badge)),React.createElement("span",{className:"gc-link"},React.createElement(Icon.ext,null))),React.createElement("span",{className:"gc-cat"},s.tags.join(" \xB7 ")),React.createElement("p",{className:"gc-desc"},s.desc),s.pypi&&React.createElement(PipInstall,{cmd:s.pypi}),React.createElement("div",{className:"chip-row gc-stack"},s.stack.slice(0,4).map(c=>React.createElement("span",{className:"chip",key:c},c)))))}),i.length===0&&React.createElement("div",{className:"garage-empty"},"// no builds match that query"))))}Object.assign(window,{PipInstall,Flagship,RoadmapCard,HeistBoard,Garage});
 
-function TrophyCase(){return React.createElement("section",{className:"section",id:"trophies"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Trophy Case // Credentials",title:"Certified,",em:"published.",note:"Recent certifications and peer-reviewed publications."}),React.createElement(Reveal,{className:"hero-facts",style:{marginBottom:28,width:"100%"}},EDUCATION.map((e,s)=>React.createElement("span",{className:"f",key:s,style:{flex:"1 1 280px"}},React.createElement("b",null,e.school),React.createElement("br",null),e.degree,". ",e.detail))),React.createElement("div",{className:"trophy-grid"},React.createElement(Reveal,{className:"trophy-col"},React.createElement("h3",null,React.createElement("span",{className:"tick"})," Certifications"),CERTS.map(e=>React.createElement("div",{className:"cert",key:e.title},React.createElement("span",{className:"badge"},e.badge),React.createElement("div",null,React.createElement("div",{className:"c-t"},e.title),React.createElement("div",{className:"c-s"},e.issuer," \xB7 ",e.date))))),React.createElement(Reveal,{className:"trophy-col",d:"1"},React.createElement("h3",null,React.createElement("span",{className:"tick"})," Publications"),PUBLICATIONS.map(e=>React.createElement("div",{className:"pub",key:e.title},React.createElement("div",{className:"p-top"},React.createElement("span",{className:"p-peer"},"Peer Reviewed"),React.createElement("span",{className:"p-venue"},e.venue)),React.createElement("div",{className:"p-title"},e.title),React.createElement("div",{className:"p-meta"},e.meta)))))))}function Safehouse(){const e=PROFILE.links,s=[{k:"Email",v:e.email,href:`mailto:${e.email}`,ic:"mail"},{k:"GitHub",v:"github.com/thebharathkumar",href:e.github,ic:"github"},{k:"LinkedIn",v:"in/thebharathkumar",href:e.linkedin,ic:"linkedin"},{k:"Medium",v:"@thebharathkumar",href:e.medium,ic:"medium"},{k:"Twitter",v:"@passdweed",href:e.twitter,ic:"twitter"},{k:"Location",v:PROFILE.city,href:null,ic:"pin"}];return React.createElement("section",{className:"section",id:"safehouse"},React.createElement("div",{className:"wrap"},React.createElement(Reveal,{className:"safehouse-in"},React.createElement("div",{className:"safehouse-grid"},React.createElement("div",null,React.createElement("div",{className:"sec-kicker"},React.createElement("span",{className:"tick"}),React.createElement("span",{className:"hud hud-acc"},"Safehouse // Contact")),React.createElement("h2",{className:"safe-title"},"Let's build trustworthy agents."),React.createElement("div",{className:"safe-roles"},PROFILE.roles.map(a=>React.createElement("span",{className:"chip",key:a},a))),React.createElement("p",{className:"safe-p"},"Open to ",PROFILE.roles[0],", ",PROFILE.roles[1],", and ",PROFILE.roles[2]," roles. If you are building production AI and care about evals, observability, and governance, my inbox is open."),React.createElement("div",{className:"safe-spon"},React.createElement("span",{className:"vi"},"i")," ",PROFILE.sponsorship),React.createElement("a",{href:`mailto:${e.email}`,className:"btn btn-primary"},React.createElement(Icon.mail,{className:"ic"})," Send a message")),React.createElement("div",{className:"contact-list"},s.map(a=>{const i=React.createElement(React.Fragment,null,React.createElement("span",{className:"cl-ic"},Icon[a.ic]()),React.createElement("div",null,React.createElement("div",{className:"cl-k"},a.k),React.createElement("div",{className:"cl-v"},a.v)));return a.href?React.createElement("a",{className:"cl",key:a.k,href:a.href,target:"_blank",rel:"noopener"},i):React.createElement("div",{className:"cl",key:a.k},i)}))))))}function Foot(){return React.createElement("footer",{className:"foot"},React.createElement("div",{className:"wrap foot-in"},React.createElement("span",null,"\xA9 2026 Bharath Kumar Rajesh. Built as an original homage, no trademarks used."),React.createElement("span",null,React.createElement("a",{href:PROFILE.links.github,target:"_blank",rel:"noopener"},"GitHub"),"  \xB7  ",React.createElement("a",{href:PROFILE.links.linkedin,target:"_blank",rel:"noopener"},"LinkedIn"),"  \xB7  ","thebharath.co")))}Object.assign(window,{TrophyCase,Safehouse,Foot});
+function TrophyCase(){return React.createElement("section",{className:"section",id:"trophies"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Trophy Case // Credentials",title:"Certified,",em:"published.",note:"Recent certifications and peer-reviewed publications."}),React.createElement(Reveal,{className:"hero-facts",style:{marginBottom:28,width:"100%"}},EDUCATION.map((e,s)=>React.createElement("span",{className:"f",key:s,style:{flex:"1 1 280px"}},React.createElement("b",null,e.school),React.createElement("br",null),e.degree,". ",e.detail))),React.createElement("div",{className:"trophy-grid"},React.createElement(Reveal,{className:"trophy-col"},React.createElement("h3",null,React.createElement("span",{className:"tick"})," Certifications"),CERTS.map(e=>React.createElement("div",{className:"cert",key:e.title},React.createElement("span",{className:"badge"},e.badge),React.createElement("div",null,React.createElement("div",{className:"c-t"},e.title),React.createElement("div",{className:"c-s"},e.issuer," \xB7 ",e.date))))),React.createElement(Reveal,{className:"trophy-col",d:"1"},React.createElement("h3",null,React.createElement("span",{className:"tick"})," Publications"),PUBLICATIONS.map(e=>React.createElement("div",{className:"pub",key:e.title},React.createElement("div",{className:"p-top"},React.createElement("span",{className:"p-peer"},"Peer Reviewed"),React.createElement("span",{className:"p-venue"},e.venue)),React.createElement("div",{className:"p-title"},e.title),React.createElement("div",{className:"p-meta"},e.meta),e.detail&&React.createElement("div",{className:"p-detail"},e.detail)))))))}function Writing(){return React.createElement("section",{className:"section",id:"writing"},React.createElement("div",{className:"wrap"},React.createElement(SecHead,{kicker:"Field Notes // Writing",title:"Selected",em:"writing.",note:"Essays and public writeups on agents, evals, and observability."}),React.createElement("div",{className:"writing-grid"},WRITING.map((e,s)=>React.createElement(Reveal,{d:String(s%3+1),key:s,style:{display:"flex"}},React.createElement("a",{className:"wcard",href:e.href,target:"_blank",rel:"noopener",style:{flex:1}},React.createElement("div",{className:"wc-top"},React.createElement("span",{className:"wc-title"},e.title),React.createElement("span",{className:"wc-link"},React.createElement(Icon.ext,null))),React.createElement("p",{className:"wc-meta"},e.meta)))))))}function Safehouse(){const e=PROFILE.links,s=[{k:"Email",v:e.email,href:`mailto:${e.email}`,ic:"mail"},{k:"GitHub",v:"github.com/thebharathkumar",href:e.github,ic:"github"},{k:"LinkedIn",v:"in/thebharathkumar",href:e.linkedin,ic:"linkedin"},{k:"Medium",v:"@thebharathkumar",href:e.medium,ic:"medium"},{k:"Twitter",v:"@passdweed",href:e.twitter,ic:"twitter"},{k:"Location",v:PROFILE.city,href:null,ic:"pin"}];return React.createElement("section",{className:"section",id:"safehouse"},React.createElement("div",{className:"wrap"},React.createElement(Reveal,{className:"safehouse-in"},React.createElement("div",{className:"safehouse-grid"},React.createElement("div",null,React.createElement("div",{className:"sec-kicker"},React.createElement("span",{className:"tick"}),React.createElement("span",{className:"hud hud-acc"},"Safehouse // Contact")),React.createElement("h2",{className:"safe-title"},"Let's build trustworthy agents."),React.createElement("div",{className:"safe-roles"},PROFILE.roles.map(a=>React.createElement("span",{className:"chip",key:a},a))),React.createElement("p",{className:"safe-p"},"Open to ",PROFILE.roles[0],", ",PROFILE.roles[1],", and ",PROFILE.roles[2]," roles. If you are building production AI and care about evals, observability, and governance, my inbox is open."),React.createElement("div",{className:"safe-spon"},React.createElement("span",{className:"vi"},"i")," ",PROFILE.sponsorship),React.createElement("a",{href:`mailto:${e.email}`,className:"btn btn-primary"},React.createElement(Icon.mail,{className:"ic"})," Send a message")),React.createElement("div",{className:"contact-list"},s.map(a=>{const i=React.createElement(React.Fragment,null,React.createElement("span",{className:"cl-ic"},Icon[a.ic]()),React.createElement("div",null,React.createElement("div",{className:"cl-k"},a.k),React.createElement("div",{className:"cl-v"},a.v)));return a.href?React.createElement("a",{className:"cl",key:a.k,href:a.href,target:"_blank",rel:"noopener"},i):React.createElement("div",{className:"cl",key:a.k},i)}))))))}function Foot(){return React.createElement("footer",{className:"foot"},React.createElement("div",{className:"wrap foot-in"},React.createElement("span",null,"\xA9 2026 Bharath Kumar Rajesh. Built as an original homage, no trademarks used."),React.createElement("span",null,React.createElement("a",{href:PROFILE.links.github,target:"_blank",rel:"noopener"},"GitHub"),"  \xB7  ",React.createElement("a",{href:PROFILE.links.linkedin,target:"_blank",rel:"noopener"},"LinkedIn"),"  \xB7  ","thebharath.co")))}Object.assign(window,{TrophyCase,Writing,Safehouse,Foot});
 
-function App(){return React.createElement(React.Fragment,null,React.createElement(Boot,null),React.createElement("div",{className:"bg-grid"}),React.createElement("div",{className:"bg-vignette"}),React.createElement("div",{className:"bg-scan"}),React.createElement(CoordReadout,null),React.createElement(CheatCode,null),React.createElement(MissionToast,null),React.createElement(Nav,null),React.createElement(Hero,null),React.createElement("main",null,React.createElement(StatPanel,null),React.createElement(MissionLog,null),React.createElement(HeistBoard,null),React.createElement(Garage,null),React.createElement(TrophyCase,null),React.createElement(Safehouse,null)),React.createElement(Foot,null),React.createElement("div",{className:"cheat-hint","aria-hidden":"true"},"\u2191\u2191\u2193\u2193\u2190\u2192\u2190\u2192 B A"))}ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App,null));
+function App(){return React.createElement(React.Fragment,null,React.createElement(Boot,null),React.createElement("div",{className:"bg-grid"}),React.createElement("div",{className:"bg-vignette"}),React.createElement("div",{className:"bg-scan"}),React.createElement(CoordReadout,null),React.createElement(CheatCode,null),React.createElement(MissionToast,null),React.createElement(Nav,null),React.createElement(Hero,null),React.createElement("main",null,React.createElement(StatPanel,null),React.createElement(MissionLog,null),React.createElement(NumbersDossier,null),React.createElement(HeistBoard,null),React.createElement(Garage,null),React.createElement(TrophyCase,null),React.createElement(Writing,null),React.createElement(Safehouse,null)),React.createElement(Foot,null),React.createElement("div",{className:"cheat-hint","aria-hidden":"true"},"\u2191\u2191\u2193\u2193\u2190\u2192\u2190\u2192 B A"))}ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App,null));
 

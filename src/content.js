@@ -2,7 +2,8 @@
    content.js  ::  single source of truth
    thebharath.co  //  AI Engineer portfolio (GTA homage)
    Rules honored: no em dashes, no invented metrics, NLP-only
-   for Compsoft, MCP Trust Scanner is in development.
+   for Compsoft, verified figures only. Artie Labs PRs were
+   opened (never merged). MCP Trust Scanner is roadmap only.
    ============================================================ */
 
 window.PROFILE = {
@@ -14,7 +15,7 @@ window.PROFILE = {
   headline: "AI Engineer building reliable agentic systems.",
   thesis:
     "I build the triage, eval, and governance tooling that makes agents trustworthy in production.",
-  quickFacts: ["MS CS, Pace Seidenberg", "GPA 3.86", "New York City", "Open to relocation"],
+  quickFacts: ["MS CS, Pace Seidenberg", "GPA 3.87", "New York City", "Open to relocation"],
   roles: ["AI Engineer", "Forward Deployed Engineer", "Software Engineer"],
   sponsorship:
     "On F-1 OPT. Will require H-1B sponsorship in the future.",
@@ -25,7 +26,7 @@ window.PROFILE = {
     twitter: "https://twitter.com/passdweed",
     portfolio: "https://thebharath.co",
     email: "bharath.kr702@gmail.com",
-    resume: "resume.pdf",
+    resume: "/resume.pdf",
   },
 };
 
@@ -37,6 +38,7 @@ window.CATS = {
   RAG: "var(--cat-rag)",
   "Governance and Trust": "var(--cat-govern)",
   "ML and Research": "var(--cat-ml)",
+  Integration: "var(--cat-integration)",
 };
 
 /* ---- BOOT sequence lines ---- */
@@ -50,29 +52,32 @@ window.BOOT = [
 
 /* ---- SKILLS :: stat panel (categorical, no numeric claims) ---- */
 window.SKILLS = [
-  { group: "Agentic", items: ["LangGraph", "LangChain", "MCP", "Multi-agent orchestration", "Tool-calling"] },
-  { group: "Models", items: ["Claude on Amazon Bedrock", "OpenAI API", "Prompt engineering"] },
+  { group: "Agentic", items: ["LangGraph", "LangChain", "MCP", "Multi-agent orchestration", "Tool-calling", "Prompt versioning"] },
+  { group: "Models", items: ["Claude on Amazon Bedrock", "OpenAI API", "Prompt engineering", "OpenRouter", "LiteLLM", "Fireworks", "Streaming and SSE"] },
   { group: "RAG", items: ["Retrieval pipelines", "Grounded generation", "Span-level citations", "Verifier loops"] },
-  { group: "Evals and Observability", items: ["OpenTelemetry", "OTLP", "Eval harnesses", "LLM-as-judge", "Drift and cost monitoring"] },
-  { group: "Backend", items: ["Python", "FastAPI", "Go", "Node.js", "Java / Spring Boot", "gRPC", "GraphQL"] },
-  { group: "Frontend", items: ["TypeScript", "React", "Next.js"] },
-  { group: "Cloud and Infra", items: ["AWS (Bedrock, EC2, S3, Lambda, SageMaker)", "Azure", "GCP", "Docker", "Kubernetes", "Terraform", "GitHub Actions"] },
-  { group: "Data", items: ["Postgres", "DuckDB", "SQLite"] },
+  { group: "Evals and Observability", items: ["OpenTelemetry", "OpenTelemetry GenAI semconv", "OTLP", "Eval harnesses", "LLM-as-judge", "Drift and cost monitoring", "Grafana", "Prometheus", "Mutation testing", "pytest", "Vitest", "Playwright"] },
+  { group: "Backend", items: ["Python", "FastAPI", "Go", "Node.js", "Java / Spring Boot", "gRPC", "GraphQL", "Fastify", "Prisma", "BullMQ", "Zod"] },
+  { group: "Frontend", items: ["TypeScript", "React", "Next.js", "Tailwind", "Vite", "TanStack Query"] },
+  { group: "Cloud and Infra", items: ["AWS (Bedrock, EC2, S3, Lambda, SageMaker)", "Azure", "GCP", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "AWS CDK", "ECS", "Docker Compose"] },
+  { group: "Data", items: ["Postgres", "DuckDB", "SQLite", "Redis"] },
 ];
 
 /* ---- EXPERIENCE :: mission log ---- */
 window.EXPERIENCE = [
   {
     code: "M-01",
-    status: "ACTIVE",
-    role: "Graduate Assistant, AI Engineering",
+    status: "CLEARED",
+    role: "Applied AI Engineer (Graduate Assistant appointment)",
     org: "Pace University, Seidenberg School",
-    period: "Mar 2025 to Present",
+    period: "Mar 2025 to May 2026",
     points: [
-      "Building a production multi-agent chatbot platform using LangGraph orchestration, Claude on Amazon Bedrock, and custom MCP tool servers, serving multiple university departments with department-specific knowledge bases and routing.",
-      "Built an LLM observability dashboard for production workflows: trace capture, eval harness, cost tracking, and drift monitoring.",
+      "Built and ran a production multi-agent platform on LangGraph and Claude (Amazon Bedrock) serving 10,000+ daily users at 99.5% uptime across 12 zero-regression releases.",
+      "Built the evaluation pipeline the platform shipped against: 200+ automated grader tests per release scoring per-prompt quality in CI, which caught 4 silent prompt-template regressions before they reached production.",
+      "Unified 50,000+ documents into one retrieval pipeline reaching 92% MRR@5 and cutting retrieval latency 60%.",
+      "Bridged live systems of record through MCP servers, handling malformed upstream responses, silent tool-call drift, and auth expiry mid-session.",
+      "Instrumented the platform with OpenTelemetry and Grafana for latency, token throughput, and quality drift.",
     ],
-    stack: ["Python", "LangGraph", "Bedrock", "MCP", "FastAPI", "TypeScript", "React", "Postgres", "AWS", "Azure"],
+    stack: ["Python", "LangGraph", "Bedrock", "MCP", "FastAPI", "TypeScript", "React", "Postgres", "OpenTelemetry", "Grafana", "AWS", "Azure"],
   },
   {
     code: "M-02",
@@ -81,11 +86,11 @@ window.EXPERIENCE = [
     org: "Let's Be The Change",
     period: "Sep 2023 to May 2024",
     points: [
-      "Shipped product features in Java, Spring Boot, and React.",
-      "Integrated Stripe, SendGrid, and Twilio across the platform.",
-      "Reduced P99 latency by 80%.",
+      "Cut API P99 latency 80%, from 2,000ms to 400ms, by re-architecting query patterns and introducing a Redis cache layer.",
+      "Integrated Stripe, SendGrid and Twilio end to end behind Java and Spring Boot APIs and webhooks, with zero post-launch incidents across 1,000+ users.",
+      "Shipped an A/B test on recommendation logic in under 3 weeks, producing a 20% retention lift and a 35% reduction in onboarding abandonment.",
     ],
-    stack: ["Java", "Spring Boot", "React", "Stripe", "Twilio"],
+    stack: ["Java", "Spring Boot", "React", "Redis", "Stripe", "SendGrid", "Twilio"],
   },
   {
     code: "M-03",
@@ -94,73 +99,137 @@ window.EXPERIENCE = [
     org: "Compsoft Technologies",
     period: "Aug 2023 to Sep 2023",
     points: [
-      "Built a sentiment analysis model using NLP, reaching 90% accuracy.",
+      "Built a sentiment analysis system using NLP, reaching 90% accuracy.",
+      "Deployed it as a Flask service on AWS.",
     ],
-    stack: ["Python", "NLP", "scikit-learn"],
-  },
-  {
-    code: "M-04",
-    status: "CLEARED",
-    role: "Data Science Intern",
-    org: "Pantech E-Learning",
-    period: "Jun 2023 to Jul 2023",
-    points: [
-      "Built data analysis and visualization workflows on customer behavior datasets.",
-    ],
-    stack: ["Python", "Pandas", "NumPy", "SQL"],
-  },
-  {
-    code: "M-05",
-    status: "CLEARED",
-    role: "Software Engineer Intern",
-    org: "Alltramatic",
-    period: "Dec 2022 to Feb 2023",
-    points: [
-      "Developed backend REST services and database queries for an e-commerce platform.",
-    ],
-    stack: ["Java", "Spring Boot", "MySQL", "REST"],
+    stack: ["Python", "NLP", "scikit-learn", "Flask", "AWS"],
   },
   {
     code: "OSS",
     status: "ONGOING",
     role: "Open Source Contributor",
-    org: "Layer5 / Meshery, Artie Labs, Faramesh Labs",
+    org: "Layer5 / Meshery, Artie Labs, faramesh-core",
     period: "2023 to Present",
     points: [
-      "Layer5 / Meshery (CNCF): 800+ lines across Go and Python over five merged PRs.",
-      "Artie Labs (YC-backed CDC platform): three merged Go PRs.",
-      "Faramesh Labs (open-source agent governance layer): roughly 1,900 lines across stacked PRs.",
+      "Layer5 / Meshery (CNCF): 800+ lines of Go and Python across five merged pull requests.",
+      "faramesh-core: 9 pull requests, including merged PR #33 (delegation token policy).",
+      "Artie Labs: three Go pull requests opened (#1731, #1732, #1733).",
     ],
     stack: ["Go", "Python", "Kubernetes", "CDC", "Governance"],
   },
 ];
 
+/* ---- NUMBERS :: dossier, every figure with its caveat ---- */
+window.NUMBERS = [
+  {
+    claim: "Agent platform scale",
+    figure: "10,000+ daily users, 99.5% uptime",
+    caveat:
+      "University population, not consumer traffic. Load is bursty around the academic calendar, not flat.",
+  },
+  {
+    claim: "Eval pipeline",
+    figure: "200+ grader tests, 4 regressions caught",
+    caveat:
+      "Graders are automated plus rubric-scored, not a held-out human panel. Four caught is four I know about.",
+  },
+  {
+    claim: "loopcheck calibration",
+    figure: "precision 1.00, recall 0.33",
+    caveat:
+      "A 15-file labelled set. The README says outright that 15 files is too small to estimate precision and recall reliably. Recall 0.33 is bad and it is published anyway.",
+  },
+  {
+    claim: "P99 latency",
+    figure: "2,000ms to 400ms",
+    caveat:
+      "Query re-architecture plus a cache on a small service, not a distributed systems rewrite.",
+  },
+];
+window.NUMBERS_NOTE =
+  "Every figure above is published in a public README or came off a committed benchmark report.";
+
 /* ---- PROJECTS :: heist board + garage ----
-   featured: shown large on the heist board.
+   featured: shown on the heist board.
+   flagship: keystone slot.  roadmap: labelled, not yet built.
+   badge:   small pill text (e.g. IN PROGRESS, ROADMAP).
+   pypi:    copyable install command.
    tags[0] drives the card accent color.                    */
 const gh = "https://github.com/thebharathkumar/";
 window.PROJECTS = [
   {
-    slug: "MCP-Trust-Scanner",
-    name: "MCP Trust Scanner",
-    inDev: true,
+    slug: "ForgeSync",
+    name: "ForgeSync",
     featured: true,
     flagship: true,
     desc:
-      "The keystone. A public scanner and leaderboard that audits MCP servers for trust, conformance, and reliability, unifying the observability and governance work below into one tool.",
+      "Reconciliation infrastructure for construction finance. Ingests invoices from four connectors with genuinely different wire formats, normalizes to one canonical model where money is an integer count of minor units, then matches records with five weighted, fully decomposable signals and shows the per-signal breakdown rather than a black-box score. Every mutation to an external system requires human approval and is idempotent at three layers, with an append-only audit trail of before state, after state and actor. 125 unit and 75 integration tests, the integration suite running against real PostgreSQL and Redis rather than fakes.",
+    perf:
+      "Scoring runs roughly 25x faster than ingestion, so the bottleneck is I/O and not the engine. Measured on a 4 vCPU Xeon at 2.8GHz, single threaded, with everything co-located.",
+    stack: ["TypeScript strict", "Fastify", "PostgreSQL", "Prisma", "Redis", "BullMQ", "React", "AWS CDK"],
+    tags: ["Flagship", "Governance and Trust", "Integration"],
+    repo: gh + "ForgeSync",
+  },
+  {
+    slug: "MCP-Trust-Scanner",
+    name: "MCP Trust Scanner",
+    roadmap: true,
+    badge: "ROADMAP",
+    desc:
+      "A public scanner and leaderboard that audits MCP servers for trust, conformance, and reliability, unifying the observability and governance work into one tool. On the roadmap, not yet built.",
     stack: ["Python", "MCP", "OpenTelemetry"],
-    tags: ["Flagship", "Governance and Trust"],
+    tags: ["Governance and Trust"],
     repo: "https://github.com/thebharathkumar",
   },
   {
     slug: "agent-triage",
     name: "agent-triage",
     featured: true,
+    pypi: "pip install agent-triage",
     desc:
       "Ranks multi-agent failures by severity, frequency, and recovery from OpenTelemetry or NDJSON traces. CLI, FastAPI dashboard, OTLP receiver, optional LLM root-cause analysis. pip-installable, typed, tested.",
     stack: ["Python", "FastAPI", "OpenTelemetry", "SQLite"],
     tags: ["Agents", "Evals and Observability"],
     repo: gh + "agent-triage",
+  },
+  {
+    slug: "agent-rx",
+    name: "agent-rx",
+    desc:
+      "Closes the loop on agent-triage: diagnose, propose, A/B test and accept fixes for multi-agent failures, with a learned prioritizer that decides what is worth fixing.",
+    stack: ["Python"],
+    tags: ["Agents"],
+    repo: gh + "agent-rx",
+  },
+  {
+    slug: "loopcheck",
+    name: "loopcheck",
+    featured: true,
+    desc:
+      "Verifier-first agent loop that grades its own grader, using mutation testing as ground truth so a test only counts when it catches deliberately broken code. Reports precision 1.00 and recall 0.33 at the 0.85 accept threshold on a 15-file labelled set, published alongside the caveat that 15 files is too small to estimate either number reliably. 86 tests, and a tamper-evident HMAC-chained audit log.",
+    stack: ["Python", "Mutation testing", "Confidence scoring", "HMAC audit chain"],
+    tags: ["Agents", "Evals and Observability"],
+    repo: gh + "loopcheck",
+  },
+  {
+    slug: "costfloor",
+    name: "costfloor",
+    featured: true,
+    desc:
+      "Finds the cheapest model per task family that shows no silent regression against the expensive baseline. Six structural detectors and no LLM judge. Reports cost in tokens only and deliberately refuses to quote a dollar saving without an operator-supplied rate card. 1,527 lines, 47 tests all passing, green CI on Python 3.11 and 3.12, with an offline demo that runs in about 0.3 seconds and needs no API key.",
+    stack: ["Python"],
+    tags: ["Evals and Observability"],
+    repo: gh + "costfloor",
+  },
+  {
+    slug: "downgrade",
+    name: "downgrade",
+    badge: "IN PROGRESS",
+    desc:
+      "Measures silent quality regression when a model router downgrades a request. Six routing arms across Fireworks FireRouter, Fireworks Nexus, OpenRouter auto and LiteLLM, scored by four structural detectors plus two LLM judges over a six-type regression taxonomy. Instrumented with OpenTelemetry GenAI semantic conventions. Statistical testing is still in progress.",
+    stack: ["Python", "OpenTelemetry GenAI Semconv", "OpenRouter", "LiteLLM"],
+    tags: ["Evals and Observability"],
+    repo: gh + "downgrade",
   },
   {
     slug: "mcp-otel-audit",
@@ -193,6 +262,15 @@ window.PROJECTS = [
     repo: gh + "obindoc",
   },
   {
+    slug: "agent-flight-recorder",
+    name: "agent-flight-recorder",
+    desc:
+      "Claude Code skills for agent observability and tamper-evident audit trails: hash-chained audit logs, OTel tracing, deterministic evals, and failure triage. 74 tests, 97% coverage.",
+    stack: ["Python", "OpenTelemetry"],
+    tags: ["Evals and Observability", "Governance and Trust"],
+    repo: gh + "agent-flight-recorder",
+  },
+  {
     slug: "klaviyo-agent-demo",
     name: "klaviyo-agent-demo",
     featured: true,
@@ -211,6 +289,15 @@ window.PROJECTS = [
     stack: ["Python", "PyTorch", "ONNX", "FastAPI"],
     tags: ["ML and Research"],
     repo: gh + "streamsense",
+  },
+  {
+    slug: "vehicle-damage-detection",
+    name: "vehicle-damage-detection",
+    desc:
+      "Vehicle damage instance segmentation. YOLO11s-seg fine-tuned on CarDD reaching 0.753 mask mAP50 held out, with an imbalance ablation, error analysis, a robustness suite, and a FastAPI and Docker inference service.",
+    stack: ["Python", "PyTorch", "YOLO", "FastAPI", "Docker", "Streamlit"],
+    tags: ["ML and Research"],
+    repo: gh + "vehicle-damage-detection",
   },
   /* ---- garage only ---- */
   {
@@ -261,16 +348,49 @@ window.PROJECTS = [
     tags: ["Evals and Observability"],
     repo: gh + "Eval-harness",
   },
+  /* ---- garage index only (one-line entries) ---- */
+  {
+    slug: "bridge-demo",
+    name: "bridge-demo",
+    desc: "Lender Fit Explainer. Eligible, Not, or Borderline verdicts behind deterministic hard filters. Express and vanilla JS, 18 offline smoke tests.",
+    stack: ["Express", "JavaScript"],
+    tags: ["Governance and Trust"],
+    repo: gh + "bridge-demo",
+  },
+  {
+    slug: "jober",
+    name: "jober",
+    desc: "Bus factor analysis. 69 tests, MIT.",
+    stack: [],
+    tags: ["ML and Research"],
+    repo: gh + "jober",
+  },
+  {
+    slug: "Claimtrace",
+    name: "Claimtrace",
+    desc: "Multi-agent contradiction detection.",
+    stack: [],
+    tags: ["Agents"],
+    repo: gh + "Claimtrace",
+  },
+  {
+    slug: "project-transfer",
+    name: "project-transfer",
+    desc: "Pace University course equivalency, migrated to Azure production.",
+    stack: ["Azure"],
+    tags: ["Integration"],
+    repo: gh + "project-transfer",
+  },
 ];
 
-window.FILTERS = ["All", "Flagship", "Agents", "Evals and Observability", "RAG", "Governance and Trust", "ML and Research"];
+window.FILTERS = ["All", "Flagship", "Agents", "Evals and Observability", "RAG", "Governance and Trust", "ML and Research", "Integration"];
 
 /* ---- EDUCATION ---- */
 window.EDUCATION = [
   {
     school: "Pace University, Seidenberg School",
-    degree: "MS, Computer Science",
-    detail: "GPA 3.86. Graduating May 2026.",
+    degree: "M.S. Computer Science",
+    detail: "GPA 3.87. May 2026.",
   },
   {
     school: "Visvesvaraya Technological University (VTU)",
@@ -290,19 +410,36 @@ window.CERTS = [
 window.PUBLICATIONS = [
   {
     venue: "Springer Nature",
-    meta: "ICACECS 2023, Corresponding Author",
-    title: "Deep CNN-based identification of medicinal and edible plants",
+    meta: "ICACECS 2023 · Corresponding Author",
+    title: "Deep CNN plant and medicinal species classification",
+    detail: "89% accuracy.",
   },
   {
     venue: "IJARESM",
-    meta: "2023",
-    title: "Driver Drowsiness Detection using AI",
+    meta: "November 2023",
+    title: "Driver Drowsiness Detection",
+    detail: "Dlib EAR plus Keras CNN, Android app, 93% pass rate.",
+  },
+];
+
+/* ---- WRITING ---- */
+window.WRITING = [
+  {
+    title: "Medium",
+    meta: "Essays and engineering notes on agents, evals, and observability.",
+    href: window.PROFILE.links.medium,
+  },
+  {
+    title: "mcp-otel-audit writeup",
+    meta: "Public audit of four MCP OpenTelemetry instrumentations against the OTel semantic conventions.",
+    href: "https://github.com/thebharathkumar/mcp-otel-audit",
   },
 ];
 
 window.NAV = [
   { id: "loadout", label: "Skills" },
   { id: "missions", label: "Experience" },
+  { id: "numbers", label: "Numbers" },
   { id: "heist", label: "Projects" },
   { id: "garage", label: "Garage" },
   { id: "trophies", label: "Trophies" },

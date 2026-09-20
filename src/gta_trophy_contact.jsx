@@ -48,9 +48,39 @@ function TrophyCase() {
                 </div>
                 <div className="p-title">{p.title}</div>
                 <div className="p-meta">{p.meta}</div>
+                {p.detail && <div className="p-detail">{p.detail}</div>}
               </div>
             ))}
           </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- WRITING :: field notes ---------------- */
+function Writing() {
+  return (
+    <section className="section" id="writing">
+      <div className="wrap">
+        <SecHead
+          kicker="Field Notes // Writing"
+          title="Selected"
+          em="writing."
+          note="Essays and public writeups on agents, evals, and observability."
+        />
+        <div className="writing-grid">
+          {WRITING.map((w, i) => (
+            <Reveal d={String((i % 3) + 1)} key={i} style={{ display: "flex" }}>
+              <a className="wcard" href={w.href} target="_blank" rel="noopener" style={{ flex: 1 }}>
+                <div className="wc-top">
+                  <span className="wc-title">{w.title}</span>
+                  <span className="wc-link"><Icon.ext /></span>
+                </div>
+                <p className="wc-meta">{w.meta}</p>
+              </a>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -132,4 +162,4 @@ function Foot() {
   );
 }
 
-Object.assign(window, { TrophyCase, Safehouse, Foot });
+Object.assign(window, { TrophyCase, Writing, Safehouse, Foot });

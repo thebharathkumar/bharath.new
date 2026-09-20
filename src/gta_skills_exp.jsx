@@ -92,4 +92,37 @@ function MissionLog() {
   );
 }
 
-Object.assign(window, { SecHead, StatPanel, MissionLog });
+/* ---------------- NUMBERS :: dossier with error bars ---------------- */
+function NumbersDossier() {
+  return (
+    <section className="section" id="numbers">
+      <div className="wrap">
+        <SecHead
+          kicker="Field Report // Calibration"
+          title="Numbers, with their"
+          em="error bars."
+          note="Every headline figure, and precisely what it does not mean."
+        />
+        <Reveal className="dossier">
+          <div className="dossier-row dossier-head">
+            <span className="d-claim">Claim</span>
+            <span className="d-figure">Figure</span>
+            <span className="d-caveat">What it does not mean</span>
+          </div>
+          {NUMBERS.map((n, i) => (
+            <div className="dossier-row" key={i}>
+              <span className="d-claim"><span className="d-label" aria-hidden="true">Claim // </span>{n.claim}</span>
+              <span className="d-figure"><span className="d-label" aria-hidden="true">Figure // </span>{n.figure}</span>
+              <span className="d-caveat"><span className="d-label" aria-hidden="true">Does not mean // </span>{n.caveat}</span>
+            </div>
+          ))}
+        </Reveal>
+        <Reveal className="dossier-note" d="1">
+          <span className="vi">i</span> {NUMBERS_NOTE}
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { SecHead, StatPanel, MissionLog, NumbersDossier });
